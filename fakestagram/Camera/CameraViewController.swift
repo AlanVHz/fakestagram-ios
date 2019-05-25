@@ -21,7 +21,15 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-        // Do any additional setup after loading the view.
+        showCamera()
+    }
+    
+    func showCamera(){
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,22 +49,9 @@ class CameraViewController: UIViewController {
             print("post: \(post)")
         }
     }
-
-    @IBAction func onTapSnap(_ sender: UIButton) {
-        
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        
-        self.present(imagePicker, animated: true, completion: nil)
-        
-        /*guard let img = UIImage(named: "JS"),
-              let imgBase64 = img.encodedBase64() else { return }
-        
-        let payload = CreatePostBase64(title: "hum...\(Date().currentTimestamp())", imageData: imgBase64, latitude: nil, longitude: nil)
-        client.create(payload: payload) { (post) in
-            print("post: \(post)")
-        }*/
+    
+    @IBAction func showCameraButton(_ sender: Any) {
+        showCamera()
     }
 }
 
@@ -79,7 +74,6 @@ extension CameraViewController: CLLocationManagerDelegate, UIImagePickerControll
             self.present(alert, animated: true, completion: nil)
         }
     }
-
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.currentLocation = locations.last

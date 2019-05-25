@@ -35,7 +35,7 @@
                                 <constraint firstAttribute="height" constant="64" id="hBr-KD-R02"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s23-Bh-4GM">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s23-Bh-4GM">
                             <rect key="frame" x="0.0" y="77" width="375" height="375"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="s23-Bh-4GM" secondAttribute="height" multiplier="1:1" id="CVP-kQ-B9x"/>
@@ -70,6 +70,7 @@
                         <constraint firstItem="1eN-BM-b1J" firstAttribute="top" secondItem="s23-Bh-4GM" secondAttribute="bottom" constant="2" id="6ZR-eh-6rh"/>
                         <constraint firstAttribute="bottom" secondItem="Gqq-yQ-HlR" secondAttribute="bottom" constant="136" id="Bim-Nf-IkJ"/>
                         <constraint firstItem="EJn-kL-eYs" firstAttribute="centerX" secondItem="nto-lF-Kms" secondAttribute="centerX" id="GFI-OM-Oae"/>
+                        <constraint firstItem="s23-Bh-4GM" firstAttribute="top" secondItem="EJn-kL-eYs" secondAttribute="bottom" constant="8" id="JBH-og-d66"/>
                         <constraint firstItem="hYs-fy-AY1" firstAttribute="firstBaseline" secondItem="s23-Bh-4GM" secondAttribute="baseline" constant="8" symbolType="layoutAnchor" id="OIu-LY-g11"/>
                         <constraint firstItem="Gqq-yQ-HlR" firstAttribute="leading" secondItem="1eN-BM-b1J" secondAttribute="leading" id="Pmr-BP-7w8"/>
                         <constraint firstItem="s23-Bh-4GM" firstAttribute="leading" secondItem="nto-lF-Kms" secondAttribute="leading" id="Uav-vb-wDt"/>

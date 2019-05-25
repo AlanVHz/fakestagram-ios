@@ -45,7 +45,7 @@ class SVGView: UIView, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
-        webView.evaluateJavaScript("window.scrollTo(350,0)", completionHandler: nil)
+        webView.evaluateJavaScript("window.scrollTo(385,0)", completionHandler: nil)
         
     }
 }
