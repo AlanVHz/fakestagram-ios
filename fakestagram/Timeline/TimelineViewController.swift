@@ -35,17 +35,12 @@ class TimelineViewController: UIViewController {
     }
     
     @objc func reloadData(){
-        print("reload data")
-//        DispatchQueue.global(qos: .background).async {
-//            sleep(2)
-//            DispatchQueue.main.async {
-//                 self.refreshControl.endRefreshing()
-//            }
-//        }
+        pageOffset = 1
         client.show { [weak self] data in
             self?.posts = data
-             sleep(1)
+            sleep(1)
             self?.refreshControl.endRefreshing()
+            self?.postsCollectionView.reloadData()
         }
     }
     
@@ -56,6 +51,7 @@ class TimelineViewController: UIViewController {
         postsCollectionView.prefetchDataSource = self
         let postCollectionViewCellXib = UINib(nibName: String(describing: PostCollectionViewCell.self), bundle: nil)
         postsCollectionView.register(postCollectionViewCellXib, forCellWithReuseIdentifier: PostCollectionViewCell.reuseIdentifier)
+        postsCollectionView.addSubview(refreshControl)
     }
     
     @objc func didLikePost(_ notification:NSNotification) {
