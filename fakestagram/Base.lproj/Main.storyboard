@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="fT2-kv-dq9">
             <objects>
                 <viewController id="0rS-E4-WRa" customClass="CameraViewController" customModule="fakestagram" customModuleProvider="target" sceneMemberID="viewController">
