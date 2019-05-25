@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="352" height="269"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8S7-EG-dCw">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8S7-EG-dCw">
                         <rect key="frame" x="0.0" y="0.0" width="352" height="269"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8S7-EG-dCw" secondAttribute="trailing" id="2DL-Iz-pNX"/>
+                <constraint firstAttribute="bottom" secondItem="8S7-EG-dCw" secondAttribute="bottom" id="55Z-m3-GBb"/>
+                <constraint firstItem="8S7-EG-dCw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WdW-4x-aA9"/>
+                <constraint firstItem="8S7-EG-dCw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tgS-GO-Lxk"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="352" height="269"/>
             <connections>

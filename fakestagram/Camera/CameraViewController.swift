@@ -11,6 +11,8 @@ import AVFoundation
 import CoreLocation
 
 class CameraViewController: UIViewController {
+    var imagePicker: UIImagePickerController!
+    
     let client = CreatePostClient()
     let locationManager = CLLocationManager()
     var currentLocation:CLLocation?
@@ -41,17 +43,44 @@ class CameraViewController: UIViewController {
     }
 
     @IBAction func onTapSnap(_ sender: UIButton) {
-        /*guard let img = UIImage(named: "cat"),
+        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        self.present(imagePicker, animated: true, completion: nil)
+        
+        /*guard let img = UIImage(named: "JS"),
               let imgBase64 = img.encodedBase64() else { return }
         
-        let payload = CreatePostBase64(title: "Tac - \(Date().currentTimestamp())", image_data: imgBase64)
-        client.create(body: payload) { (post) in
+        let payload = CreatePostBase64(title: "hum...\(Date().currentTimestamp())", imageData: imgBase64, latitude: nil, longitude: nil)
+        client.create(payload: payload) { (post) in
             print("post: \(post)")
         }*/
     }
 }
 
-extension CameraViewController: CLLocationManagerDelegate {
+extension CameraViewController: CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var imageToPost = UIImage()
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+        imageToPost = info[.originalImage] as! UIImage
+        
+        guard let imgBase64 = imageToPost.encodedBase64() else { return }
+        
+        let payload = CreatePostBase64(title: "ImagePicker :D", imageData: imgBase64, latitude: nil, longitude: nil)
+        client.create(payload: payload) { (post) in
+            let alert = UIAlertController(title: "Foto posteada!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                print("OK BUTTON")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.currentLocation = locations.last
     }

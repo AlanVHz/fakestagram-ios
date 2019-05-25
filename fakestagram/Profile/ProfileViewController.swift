@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
         
         delegatesAndXib()
         getProfileInfo()
+        setConstraints()
         
         client.show { [weak self] posts in
             self?.posts = posts
@@ -45,8 +46,14 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    func setConstraints(){
+        previewCollectionPosts.translatesAutoresizingMaskIntoConstraints = false
+        previewCollectionPosts.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        previewCollectionPosts.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -1.0).isActive = true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = previewCollectionPosts.frame.width / 3.0
+        let size = view.frame.width / 2
         return CGSize(width: size, height: size)
     }
     
@@ -61,7 +68,6 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostThumbnailCollectionViewCell.reuseIdentifier, for: indexPath) as! PostThumbnailCollectionViewCell
         cell.post = posts[indexPath.row]
-        cell.backgroundColor = .red
        
         return cell
     }
